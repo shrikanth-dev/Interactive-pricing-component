@@ -3,6 +3,8 @@ const price = document.getElementById("price");
 const views = document.getElementById("views");
 const toggle = document.getElementById("toggle");
 
+const YEARLY_DISCOUNT = 0.25;
+
 const pricing = [
   {
     pageviews: "10K",
@@ -26,49 +28,39 @@ const pricing = [
   },
 ];
 
-function updateSlider() {
-  const value = (range.value - range.min) / (range.max - range.min) * 100;
-
-  range.style.background = `linear-gradient(to right,
-    hsl(174, 77%, 80%) 0%,
-    hsl(174, 77%, 80%) ${value}%,
-    hsl(224, 65%, 95%) ${value}%,
-    hsl(224, 65%, 95%) 100%)`;
+function updateSliderBackground(percent) {
+  range.style.background = `
+    linear-gradient(
+      to right,
+      var(--soft-cyan) 0%,
+      var(--soft-cyan) ${percent}%,
+      var(--light-grayish-blue) ${percent}%,
+      var(--light-grayish-blue) 100%
+    )
+  `;
 }
 
 function updatePricing() {
-  const value = range.value;
+  const idx = Number(range.value);
 
-  let currentPrice = pricing[value].price;
+  let currentPrice = pricing[idx].price;
 
   if (toggle.checked) {
-    currentPrice =currentPrice * 0.75;
+    currentPrice *= 1 - YEARLY_DISCOUNT;
   }
 
-  views.textContent = pricing[value].pageviews;
+  views.textContent = pricing[idx].pageviews;
 
   price.textContent = `$${currentPrice.toFixed(2)}`;
 
-  const percent = (value / 4) * 100;
+  const percent =
+    ((range.value - range.min) / (range.max - range.min)) * 100;
 
-    range.style.background = `
-        linear-gradient(
-          to right,
-          var(--soft-cyan) 0%,
-          var(--soft-cyan) ${percent}%,
-          var(--light-grayish-blue) ${percent}%,
-          var(--light-grayish-blue) 100%
-        )
-      `;
+  updateSliderBackground(percent);
 }
-
-range.addEventListener("input", updateSlider);
 
 range.addEventListener("input", updatePricing);
 
 toggle.addEventListener("change", updatePricing);
-
-// initialize
-updateSlider();
 
 updatePricing();

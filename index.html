@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive pricing component</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <h1>Simple, traffic-based pricing</h1>
+        <p>Sign-up for our 30-day trial. No credit card required.</p>
+        <img src="./images/pattern-circles.svg" alt="pattern-circles" />
+      </header>
+
+      <section class="card">
+        <div class="card-top">
+          <div class="pricing-info">
+            <div class="pageviews">
+              <span id="views">100k</span>
+              <span>Pageviews</span>
+            </div>
+            <div class="price">
+              <span class="amount" id="price"> $16.00 </span>
+              <span class="per"> /month </span>
+            </div>
+          </div>
+
+          <label for="slider-wrap" aria-label="Select traffic">
+            <input type="range" min="0" max="4" id="range" />
+          </label>
+
+          <div class="billing">
+            <span>Monthly Billing</span>
+
+            <label class="switch">
+              <input type="checkbox" id="toggle" />
+              <span class="slider-switch"></span>
+            </label>
+
+            <div class="yearly">
+              <span>Yearly Billing</span>
+              <span class="badge"> 25% discount</span>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="card-bottom">
+          <ul>
+            <li>Unlimited websites</li>
+            <li>100% data ownership</li>
+            <li>Email reports</li>
+          </ul>
+          <button class="cta" type="button">Start my trial</button>
+        </div>
+      </section>
+
+      <footer class="attribution" aria-hidden="true">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">G Srikanth</a>.
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
